@@ -1,0 +1,5 @@
+stroka = input("Введите первую строку какого-либо стихотворения ")
+print(len(stroka))
+start = int(input("Введите индекс начала "))
+finish = int(input("Введите индекс конца "))
+print(stroka[start:finish])
