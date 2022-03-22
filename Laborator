@@ -18,48 +18,20 @@ print('Список команд :\n'
       '"ad"-добавить новый документ в данные\n'
       '"d"-удалить документ из данных\n'
       '"m"-переместить документ с полки на полку')
-while True:  
-       it = input("Введите команду с маленькой буквы: ")
-       if it == 'q':
-              break;
-       elif it == 'p':
-              doc_p = input("Введите номер документа: ")
-              p(doc_p)
-       elif it == 's':
-              doc_s = input("Введите номер документа: ")
-              s(doc_s)
-       elif it == 'i':
-              i()
-       elif it == 'ads':
-              add = input("Введите номер полки: ")
-              ads(add)
-       elif it == 'ds':
-              remove = input("Введите номер полки: ")
-              ds(remove)
-       elif it == 'ad':
-              num = input("Введите номер документа: ")
-              type_ad = input("Введите тип документа: ")
-              name = input("Введите владельца документа: ")
-              shell = input("Введите полку для хранения: ")
-              ad(type_ad,num,name,shell)
-       elif it == 'd':
-              nomer = input("Введите номер документа : ")
-              d(nomer)
-       elif it == 'm':
-              docu = input("Введите номер документа: ")
-              shell = input("Введите номер полки: ")
-              m(docu,shell)   
 def p(doc_p):
        for item in documents:
-              if item == doc_p:
-                     return(print("Владелец документа: " + ['name'][item]))
+              if item['number'] == doc_p:
+                     print("Владелец документа: " + item['name'])
+                     break;
+       else:
+              print("Документ не найден в базе")
 def s(doc_s):
        for item in directories:
               if item == doc_s:
                      print(directories[item])
 def i():
        for item in documents:
-              print(f"№ {item['number']},тип :{item['type']},владелец :{item['name']}, полка: {s(['number'][item])})")
+              print(f"№ {item['number']},тип :{item['type']},владелец :{item['name']}, полка: {s(item['number'])})")
               
 def ads(add):
        for item in directories:
@@ -101,3 +73,34 @@ def d(nomer):
                      
                      
 #def m(docu,shell):
+while True:  
+       it = input("Введите команду с маленькой буквы: ")
+       if it == 'q':
+              break;
+       elif it == 'p':
+              doc_p = input("Введите номер документа: ")
+              p(doc_p)
+       elif it == 's':
+              doc_s = input("Введите номер документа: ")
+              s(doc_s)
+       elif it == 'i':
+              i()
+       elif it == 'ads':
+              add = input("Введите номер полки: ")
+              ads(add)
+       elif it == 'ds':
+              remove = input("Введите номер полки: ")
+              ds(remove)
+       elif it == 'ad':
+              num = input("Введите номер документа: ")
+              type_ad = input("Введите тип документа: ")
+              name = input("Введите владельца документа: ")
+              shell = input("Введите полку для хранения: ")
+              ad(type_ad,num,name,shell)
+       elif it == 'd':
+              nomer = input("Введите номер документа : ")
+              d(nomer)
+       elif it == 'm':
+              docu = input("Введите номер документа: ")
+              shell = input("Введите номер полки: ")
+              m(docu,shell)   
