@@ -17,7 +17,7 @@ print('Список команд :\n'
       '"ds"-удалить существующую полку(если она пустая)\n'
       '"ad"-добавить новый документ в данные\n'
       '"d"-удалить документ из данных\n'
-      '"m"-переместить документ с полки на полку\n')
+      '"m"-переместить документ с полки на полку')
 while True:  
        it = input("Введите команду с маленькой буквы: ")
        if it == 'q':
@@ -48,18 +48,18 @@ while True:
        elif it == 'm':
               docu = input("Введите номер документа: ")
               shell = input("Введите номер полки: ")
-              m(docu,shell)                   
+              m(docu,shell)   
 def p(doc_p):
        for item in documents:
               if item == doc_p:
-                     print("Владелец документа: " + ['name'][item])
+                     return(print("Владелец документа: " + ['name'][item]))
 def s(doc_s):
        for item in directories:
               if item == doc_s:
                      print(directories[item])
 def i():
        for item in documents:
-              print(f"№ {item['number']},тип :{item['type']},владелец :{item['name']})")
+              print(f"№ {item['number']},тип :{item['type']},владелец :{item['name']}, полка: {s(['number'][item])})")
               
 def ads(add):
        for item in directories:
@@ -78,21 +78,26 @@ def ds(remove):
               else :
                       print("Такой полки не существует.Текущий перечень полок: " + list(directories.item()))
 def ad(type_ad,num,name,shell):
-       for item in directories:
-              if num == item:
-                    documents.append({'type':type_ad})
-                    documents.append({'number':num})
-                    documents.append({'name':name})
-                    directories.append({shell:num})
+       if shell in directories.keys():
+              documents.append({'type':type_ad})
+              documents.append({'number':num})
+              documents.append({'name':name})
+              directories.append({shell:num})
+              print("Текущий список документов: ")
+              i()
+       else:
+               print("Такой полки не существует. Добавьте полку командой as. ")
+               i()
        
 def d(nomer):
        for item in documents:
               if item == nomer:
                      documents.pop(item) 
                      print("Документ удален")
+                     i()
               else:
                      print("Документ не найден в базе")
+                     i()
                      
                      
 #def m(docu,shell):
-
