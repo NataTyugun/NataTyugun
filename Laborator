@@ -20,40 +20,39 @@ print('Список команд :\n'
       '"m"-переместить документ с полки на полку\n')
 while True:  
        it = input("Введите команду с маленькой буквы: ")
-       if it != "q":
+       if it == 'q':
               break;
-       elif it == "p":
+       elif it == 'p':
               doc_p = input("Введите номер документа: ")
               p(doc_p)
-       elif it == "s":
+       elif it == 's':
               doc_s = input("Введите номер документа: ")
               s(doc_s)
-       elif it == "i":
+       elif it == 'i':
               i()
-       elif it == "ads":
+       elif it == 'ads':
               add = input("Введите номер полки: ")
               ads(add)
-       elif it == "ds":
+       elif it == 'ds':
               remove = input("Введите номер полки: ")
               ds(remove)
-       elif it == "ad":
+       elif it == 'ad':
               num = input("Введите номер документа: ")
               type_ad = input("Введите тип документа: ")
               name = input("Введите владельца документа: ")
               shell = input("Введите полку для хранения: ")
               ad(type_ad,num,name,shell)
-       elif it == "d":
+       elif it == 'd':
               nomer = input("Введите номер документа : ")
               d(nomer)
-       elif it == "m":
+       elif it == 'm':
               docu = input("Введите номер документа: ")
               shell = input("Введите номер полки: ")
-              m(docu,shell)
-                     
+              m(docu,shell)                   
 def p(doc_p):
        for item in documents:
               if item == doc_p:
-                     print("Владелец документа: " ['name'][item])
+                     print("Владелец документа: " + ['name'][item])
 def s(doc_s):
        for item in directories:
               if item == doc_s:
@@ -96,3 +95,4 @@ def d(nomer):
                      
                      
 #def m(docu,shell):
+
