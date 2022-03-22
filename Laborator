@@ -26,19 +26,23 @@ def p(doc_p):
        else:
               print("Документ не найден в базе")
 def s(doc_s):
-       for item in directories:
-              if item == doc_s:
-                     print(directories[item])
+       for item in directories.keys():
+              if doc_s in directories[item]:
+                     print("Документ хранится на полке: " + item)
+                     break;
+       else:
+              print("Документ не найден в базе")
 def i():
        for item in documents:
-              print(f"№ {item['number']},тип :{item['type']},владелец :{item['name']}, полка: {s(item['number'])})")
+              print(f"№ {item['number']},тип :{item['type']},владелец :{item['name']}")
+              s(item['number'])
               
 def ads(add):
        for item in directories:
-              if item == add:
+              if add in directories.values():
                      print("Такая полка уже существует.Текущий перечень полок: " + list(directories.item()))
               else:
-                     directories.append({add:[]})
+                     directories[add]=''
                      print("Полка добавлена.Текущий перечень полок: " + list(directories.item()))
 def ds(remove):
        for item in directories:
