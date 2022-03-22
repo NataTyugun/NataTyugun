@@ -1,0 +1,82 @@
+documents = [
+ {'type': 'passport', 'number': '2207 876234', 'name': 'Василий Гупкин'},
+ {'type': 'invoice', 'number': '11-2', 'name': 'Геннадий Покемонов'},
+ {'type': 'insurance', 'number': '10006', 'name': 'Аристарх Павлов'}
+]
+directories = {
+ '1': ['2207 876234', '11-2'],
+ '2': ['10006'],
+ '3': []
+}
+#еще доделывается
+print('Список команд :\n'
+      '"p"- узнать владельца документа по его номеру\n'
+      '"s"-узнать полку по номеру документа\n'
+      '"i"-увидеть полную информацию по всем документам\n'
+      '"ads"-добавить новую полку\n'
+      '"ds"-удалить существующую полку(если она пустая)\n'
+      '"ad"-добавить новый документ в данные\n'
+      '"d"-удалить документ из данных\n'
+      '"m"-переместить документ с полки на полку\n')
+while True:  
+       it = input("Введите команду с маленькой буквы: ")
+       if it != "q":
+              break;
+       elif it == "p":
+              doc_p = input("Введите номер документа: ")
+       elif it == "s":
+              doc_s = input("Введите номер документа: ")
+       elif it == "i":
+       elif it == "ads":
+              add = input("Введите номер полки: ")
+       elif it == "ds":
+              remove = input("Введите номер полки: ")
+       elif it == "ad":
+              num = input("Введите номер документа: ")
+              type_ad = input("Введите тип документа: ")
+              name = input("Введите владельца документа: ")
+              shell = input("Введите полку для хранения: ")
+       elif it == "d":
+              nomer = input("Введите номер документа : ")
+       elif it == "m":
+              docu = input("Введите номер документа: ")
+              shell = input("Введите номер полки: ")
+                     
+def p():
+       for item in documents:
+              if item == doc_p:
+                     print("Владелец документа: " ['name'][item])
+def s():
+       for item in directories:
+              if item == doc_s:
+                     print(directories[item])
+def i():
+       for item in documents:
+              print(f"№ {item['number']},тип :{item['type']},владелец :{item['name']}))
+              
+def ads():
+       for item in directories:
+              if item == add:
+                     print("Такая полка уже существует.Текущий перечень полок: " list(directories.item()))
+              else:
+                     directories.append({add:[]})
+                      print("Полка добавлена.Текущий перечень полок: " list(directories.item()))
+def ds():
+       for item in directories:
+              if item == remove and directories[item] == None:
+                     del directories[remove]
+                     print("Полка удалена.Текущий перечень полок: " list(directories.item()))
+              elif item == remove and directories[item] != None:
+                      print("На полке есть документа, удалите их перед удалением полки.Текущий перечень полок: "list(directories.item()))
+              else :
+                      print("Такой полки не существует.Текущий перечень полок: "list(directories.item()))
+def ad():
+       for item in directories:
+              if num == item
+       documents.append({'type':type_ad})
+       documents.append({'number':num})
+       documents.append({'name':name})
+       directories.append({shell:num})
+def d():
+       for item in documents:
+              if item == nomer:
