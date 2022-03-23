@@ -8,7 +8,6 @@ directories = {
  '2': ['10006'],
  '3': []
 }
-#еще доделывается
 print('Список команд :\n'
       '"p"- узнать владельца документа по его номеру\n'
       '"s"-узнать полку по номеру документа\n'
@@ -39,26 +38,36 @@ def i():
               
 def ads(add):
        for item in directories:
-              if add in directories.values():
-                     print("Такая полка уже существует.Текущий перечень полок: " + list(directories.item()))
+              if add in directories.keys():
+                     print("Такая полка уже существует.Текущий перечень полок: ")
+                     print(directories.keys())
+                     break;
               else:
-                     directories[add]=''
-                     print("Полка добавлена.Текущий перечень полок: " + list(directories.item()))
+                     directories[add]=[]
+                     print("Полка добавлена.Текущий перечень полок: ")
+                     print(directories.keys())
+                     break;
 def ds(remove):
        for item in directories:
-              if item == remove and directories[item] == None:
+              if remove in directories.keys() and directories[remove] == []:
                      del directories[remove]
-                     print("Полка удалена.Текущий перечень полок: " + list(directories.item()))
-              elif item == remove and directories[item] != None:
-                      print("На полке есть документа, удалите их перед удалением полки.Текущий перечень полок: " + list(directories.item()))
+                     print("Полка удалена.Текущий перечень полок: ")
+                     print(directories.keys())
+                     break;
+              elif remove in directories.keys() and directories[remove] != []:
+                      print("На полке есть документы, удалите их перед удалением полки.Текущий перечень полок: ")
+                      print(directories.keys())
+                      break;
               else :
-                      print("Такой полки не существует.Текущий перечень полок: " + list(directories.item()))
+                      print("Такой полки не существует.Текущий перечень полок: ")
+                      print(directories.keys())
+                      break;
 def ad(type_ad,num,name,shell):
        if shell in directories.keys():
-              documents.append({'type':type_ad})
-              documents.append({'number':num})
-              documents.append({'name':name})
-              directories.append({shell:num})
+              documents['type']:type_ad
+              documents['number']:num
+              documents['name']:name
+              directories[shell]:num
               print("Текущий список документов: ")
               i()
        else:
@@ -67,14 +76,17 @@ def ad(type_ad,num,name,shell):
        
 def d(nomer):
        for item in documents:
-              if item == nomer:
+              if item['number'] == nomer:
                      documents.pop(item) 
                      print("Документ удален")
+                     print("Текущий список документов: ")
                      i()
+                     break;
               else:
                      print("Документ не найден в базе")
+                     print("Текущий список документов: ")
                      i()
-                     
+                     break;
                      
 #def m(docu,shell):
 while True:  
