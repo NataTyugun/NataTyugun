@@ -1,0 +1,79 @@
+with open('students.txt', 'r', encoding = 'utf8') as file:
+    l = file.read().split('\n')
+print(l)
+print("""
+add_stud - добавить нового студента
+find_stud - найти студента
+edit_stud - редактировать информацию о студенте
+delete_stud - удалить студента
+""")
+
+def add_stud(surname: str, name: str):
+    l.append(surname + " " + name)
+    l.sort()
+    return l
+
+def find_stud(surname: str, name = None):
+    fam = []
+    if name != None:
+        if surname + ' ' + name in l:
+            print('Такой студент есть в группе')
+        else:
+            print('Такого студента нет в группе')
+    elif surname in l.split():
+        fam.append(l)
+        print(fam)
+    else:
+        print('Студенты с данной фамилией не найдены')
+       
+
+def edit_stud(surname:str, name: str, new_surname = None, new_name = None):
+    stud = find_stud(surname, name)
+    if not new_surname:
+        new_surname = surname
+    if not new_name:
+        new_name = name
+    add_stud(new_surname, new_name)
+    delete_stud(surname,name)
+    return l
+        
+def delete_stud(surname: str, name = None):
+    fam = []
+    if name != None:
+        if surname + ' ' + name in l:
+            l.remove(surname + ' ' + name)
+            print(l)
+        else:
+            print('Такого студента нет в группе')
+    elif surname in l.split():
+        fam.append(l)
+        print(fam)
+        name = input('Выберите имя ')
+        l.remove(surname + ' ' + name)
+    else:
+        print('Студенты с данной фамилией не найдены')
+
+     
+
+while True:
+    a = input('Введите команду из списка: ')
+    if a == 'add_stud':
+        surname = input('Введите фамилию ')
+        name = input('Введите имя ')
+        print(add_stud(surname,name))
+    elif a == 'find_stud':
+        surname = input('Введите фамилию ')
+        name = input('Введите имя или пропустите ')
+        find_stud(surname,name)
+    elif a == 'edit_stud':
+        surname = input('Введите фамилию ')
+        name = input('Введите имя ')
+        new_surname = input('Введите новую фамилию или пропустите')
+        new_name = input('Введите новое имя или пропустите ')
+        print(edit_stud(surname,name,new_surname,new_name))
+    elif a == 'delete_stud':
+        surname = input('Введите фамилию ')
+        name = input('Введите имя или пропустите ')
+        delete_stud(surname,name)
+    else:
+        print('Ошибка!')
