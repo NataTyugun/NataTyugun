@@ -53,8 +53,6 @@ def delete_stud(surname: str, name = None):
     else:
         print('Студенты с данной фамилией не найдены')
 
-     
-
 while True:
     a = input('Введите команду из списка: ')
     if a == 'add_stud':
