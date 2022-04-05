@@ -29,7 +29,7 @@ def find_stud(surname: str, name = ''):
         print('Студенты с данной фамилией не найдены')
        
 
-def edit_stud(surname:str, name: str, new_surname = None, new_name = None):
+def edit_stud(surname:str, name: str, new_surname = '', new_name = ''):
     stud = find_stud(surname, name)
     if not new_surname:
         new_surname = surname
