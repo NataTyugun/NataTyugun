@@ -53,6 +53,8 @@ def delete_stud(surname: str, name = None):
     else:
         print('Студенты с данной фамилией не найдены')
 
+     
+
 while True:
     a = input('Введите команду из списка: ')
     if a == 'add_stud':
@@ -68,7 +70,7 @@ while True:
         name = input('Введите имя ')
         new_surname = input('Введите новую фамилию или пропустите')
         new_name = input('Введите новое имя или пропустите ')
-        print(edit_stud(surname,name,new_surname,new_name))
+        edit_stud(surname,name,new_surname,new_name)
     elif a == 'delete_stud':
         surname = input('Введите фамилию ')
         name = input('Введите имя или пропустите ')
