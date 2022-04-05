@@ -13,15 +13,17 @@ def add_stud(surname: str, name: str):
     l.sort()
     return l
 
-def find_stud(surname: str, name = None):
+def find_stud(surname: str, name = ''):
     fam = []
-    if name != None:
+    if name != '':
         if surname + ' ' + name in l:
             print('Такой студент есть в группе')
         else:
             print('Такого студента нет в группе')
-    elif surname in l.split():
-        fam.append(l)
+    elif name == '':
+        for student in l:
+            if surname in student:
+                fam.append(student)
         print(fam)
     else:
         print('Студенты с данной фамилией не найдены')
@@ -37,19 +39,23 @@ def edit_stud(surname:str, name: str, new_surname = None, new_name = None):
     delete_stud(surname,name)
     return l
         
-def delete_stud(surname: str, name = None):
+def delete_stud(surname: str, name = ''):
     fam = []
-    if name != None:
+    if name != '':
         if surname + ' ' + name in l:
             l.remove(surname + ' ' + name)
             print(l)
         else:
             print('Такого студента нет в группе')
-    elif surname in l.split():
-        fam.append(l)
+    elif name == '':
+        for student in l:
+            if surname in student:    
+                fam.append(student)
         print(fam)
         name = input('Выберите имя ')
         l.remove(surname + ' ' + name)
+        print('Студент удален из списка')
+        print(l)
     else:
         print('Студенты с данной фамилией не найдены')
 
