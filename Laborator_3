@@ -1,1 +1,33 @@
+import json
 
+def first(tasks):
+    task = input('Сформулируйте задачу: ')
+    category = input('Добавьте категорию к задаче: ')
+    time = input('Добавьте время к задаче: ')
+    tasks.append({'name': name, 'category': category, 'time': time})
+
+def second(tasks):
+     try:
+         with open('tasks.json') as f:
+             tasks = json.load(f)
+     except Exception as e:
+         print(e)
+
+while True:
+    print('''Простой todo:
+     1. Добавить задачу.)
+     2. Вывести список задач.)
+     3. Выход.
+      ''')
+    command= int(input('Укажите число: '))
+    if command==1:
+        with open('tasks.json', 'w') as f:
+            json.dump(tasks, f)
+    elif command==2:
+        for i in tasks:
+            print(f'Задача: {task["name"]} Категория: {task["category"]} Дата: {task["time"]}')
+    elif command==3:
+        print('задачи сохранены в файл!')
+        break
+    else:
+        print('Ошибка!')
