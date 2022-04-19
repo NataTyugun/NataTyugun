@@ -25,7 +25,7 @@ while True:
             json.dump(tasks, f)
     elif command==2:
         for i in tasks:
-            print(f'Задача: {task["name"]} Категория: {task["category"]} Дата: {task["time"]}')
+            print(f'Задача: {tasks["name"]} Категория: {tasks["category"]} Дата: {tasks["time"]}')
     elif command==3:
         print('задачи сохранены в файл!')
         break
