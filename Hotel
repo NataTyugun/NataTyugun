@@ -44,7 +44,7 @@ class Hotel:
         info="Процент занятых номеров: \n"
         for i in self._room_type:
             info =round(self._rooms[i].count(1)/len(self._rooms[i])*100, 2)
-            return f"Тип {i}: {info}% \n"
+        return f"Тип {i}: {info}% \n"
 
     def revenue(self):
         revenue=0
