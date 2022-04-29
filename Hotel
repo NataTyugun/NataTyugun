@@ -4,12 +4,13 @@ class Hotel:
     _rooms = dict()
     
     def __init__(self, num_rooms):
-        self._rooms[[self._room_type[num]]=[1]*num_roooms[num][for num in range(len(num_rooms))]]
+        for i in range(len(num_rooms)):
+            self._rooms[self._room_type[i]]=[0]*num_rooms[i]
 
     def occupy (self, types, room_id):
         if (self._rooms[types][room_id]==0):
             self._rooms[types][room_id] = 1
-            print (f"Номер {NumRoom} забронирован ")
+            print (f"Номер {room_id} забронирован ")
         else:
             raise RuntimeError("Номер занят")
 
@@ -24,43 +25,41 @@ class Hotel:
                     type_info += f"{j+1} номер занят \n"
         return info
     
-    def free(self,types,room)id):
+    def free(self,types,room_id):
         if (self._rooms[types][room_id]==1):
             self._rooms[types][room_id] = 0
-            print (f"Номер {NumRoom} освобождён ")
-
+            print (f"Номер {room_id} освобождён ")
 
     def all_occypy(self):
         for i in self._room_type:
             for j in range(len(self._rooms[i])):
                 self._rooms[i][j]=1
         
-
     def all_free(self):
         for i in self._room_type:
             for j in range(len(self._rooms[i])):
                 self._rooms[i][j]=0
-
+       
     def occupy_share(self):
         info="Процент занятых номеров: \n"
         for i in self._room_type:
-            info += f"Тип {i}: {round(self._rooms[i].count(0)/len(self._rooms[i])*100, 2)}% \n"
-        return info
+            info =round(self._rooms[i].count(1)/len(self._rooms[i])*100, 2)
+            return f"Тип {i}: {info}% \n"
 
     def revenue(self):
         revenue=0
         for i in self._room_type:
-            revenue += (self._rooms[i].count(0)) * self._prices[i]
+            revenue += (self._rooms[i].count(1)) * self._prices[i]
         return f"Доход равен {revenue}"        
 
-hotel = Hotel((3, 2, 4, 1)) #В нашем отеле, например, 2 SGL номеров, 3 DBl,4 Juniour Suite, 5 Suite.
-print(hotel._rooms) # Смотрим номера через атрибут self.rooms
-hotel.occupy("SGL", 2)#Бронируем номер 2 SGL
-hotel.occupy("DBL", 1)#Бронируем номер 1 DBL
-hotel.occupy("DBL", 3)#Бронируем номер 3 в DBL
+hotel = Hotel((3, 2, 4, 1)) #В нашем отеле, например, 3 SGL номеров, 2 DBl,4 Juniour Suite, 5 Suite.
+print(hotel._rooms) # Смотрим номера 
+hotel.occupy("SGL", 2)#Бронируем номер в  SGL
+hotel.occupy("DBL", 0)#Бронируем номер в DBL
+hotel.occupy("DBL", 1)#Бронируем номер в DBL
 print(hotel._rooms)#Смотрим номера
 print (hotel.occupy_share())#Считаем долю занятых номеров
-hotel.free("DBL", 3)#Освобождаем номер 3 DBL
+hotel.free("DBL", 1)#Освобождаем номер 1 DBL
 print(hotel.revenue())
 hotel.all_occypy()
 print(hotel.occupy_share())
